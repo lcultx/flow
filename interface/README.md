@@ -1,4 +1,4 @@
-# flow
+# interface
 
 Run this project:
 

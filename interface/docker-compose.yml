@@ -1,0 +1,15 @@
+version: '3'
+services:
+  flow-interface:
+    build:
+      context: .
+      dockerfile: debug.Dockerfile
+    environment:
+      NODE_ENV: development
+    ports:
+      - 3002:3002
+    volumes:
+      - .:/container/app
+      #- jexboss
+    ## set your startup file here
+    command:  npm run dev
