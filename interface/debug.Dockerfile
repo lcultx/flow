@@ -23,8 +23,13 @@ RUN npm install --registry http://r.cnpmjs.org/
 
 WORKDIR /container/app
 
+RUN rm -rf /container/app/*
+RUN cp -R ../node_modules ./
+RUN cp ../package.json ./
 # 添加源代码
-ADD . /container/app
+ADD ./src /container/app/src
+ADD ./bsconfig.json /container/app/bsconfig.json 
+ADD ./webpack.config.js /container/app/webpack.config.js
 
 # 运行app.js
-CMD ["node", "main.js"]
+CMD ["ls"]

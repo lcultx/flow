@@ -1,6 +1,7 @@
 version: '3'
 services:
   flow-interface:
+    image: flow-interface
     build:
       context: .
       dockerfile: debug.Dockerfile
@@ -9,7 +10,7 @@ services:
     ports:
       - 3002:3002
     volumes:
-      - .:/container/app
+      - ./src:/container/app/src
       #- jexboss
     ## set your startup file here
-    command:  npm run dev
+    command:  npm run dev 
