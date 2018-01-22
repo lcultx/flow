@@ -57,7 +57,7 @@ ys = tf.placeholder(tf.float32,[None,10])
 
 keep_prob = tf.placeholder(tf.float32) #多少结果不被drop掉
 x_image = tf.reshape(xs,[-1,28,28,1])
-print(x_image.shape) # [n_samples,28,28,1]
+#print(x_image.shape) # [n_samples,28,28,1]
 
 
 #conv1
@@ -86,10 +86,6 @@ b_fc2 = bias_variable([10])
 prediction = tf.nn.softmax(tf.matmul(h_fc1_drop,W_fc2) + b_fc2)
 
 
-
-
-
-
 cross_entropy = tf.reduce_mean(
     -tf.reduce_sum(ys*tf.log(prediction),
     reduction_indices=[1]))
@@ -102,8 +98,8 @@ sess.run(tf.initialize_all_variables())
 
 for i in range(1000):
     batch_xs,batch_ys = mnist.train.next_batch(100)
-    print(batch_xs.shape)
-    print(batch_ys.shape)
+    # print(batch_xs.shape)
+    # print(batch_ys.shape)
     #print(train_step)
     sess.run(train_step,feed_dict={xs:batch_xs,ys:batch_ys})
     if i % 50 == 0:
