@@ -1,0 +1,28 @@
+
+<%-  include('./common',{abc:'abc'}) %>
+<%
+
+    meta.filename = content.name + '.ts';
+
+    var getNamefromPackageName = function(pkgName){
+        return _.capitalize(pkgName.split('.').pop());
+    };
+
+   
+%>
+
+/**
+ * <%= content.label %>
+ */
+export class <%= getNamefromPackageName(content.name) %> {
+<% content.children && content.children.forEach((item)=>{
+    if(item.name){
+%>
+   /** <%= item.label %> */
+   public static <%= item.name %>: string = '<%= item.data_value %>';
+<%
+    }  
+ })
+%>
+
+}
